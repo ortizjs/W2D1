@@ -17,9 +17,17 @@ def reaction(maybe_fruit)
   if FRUITS.include? maybe_fruit
     puts "OMG, thanks so much for the #{maybe_fruit}!"
   else 
-    raise StandardError 
-  end 
-end
+    begin
+    rescue ArgumentError => err
+      if err == "coffee"
+        puts "Thats's not a fruit, but I like it"
+        retry
+      end
+        puts "No thanks, that's not what I want"
+    end
+  end  
+end 
+
 
 def feed_me_a_fruit
   puts "Hello, I am a friendly monster. :)"
