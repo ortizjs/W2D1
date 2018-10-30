@@ -1,4 +1,4 @@
-#Updated with this comment
+#Updated with comment
 class Board
   attr_accessor :piece
 

@@ -1,5 +1,5 @@
 
-#Updated with this comment
+#Updated with comment
 class Employee
   attr_reader :name, :salary, :title
   attr_accessor :boss
