@@ -1,6 +1,8 @@
 require "byebug"
 require "singleton"
 # require "colorized"
+require_relative "display.rb"
+require_relative "cursor.rb"
 
 #Updated with comment
 class Board
@@ -22,6 +24,13 @@ class Board
   def []=(pos, value)
     row, col = pos
     @grid[row][col] = value
+  end
+
+  def valid_pos?(pos)
+    if (pos[0] < 0 || pos[1] > 7) || (pos[0] > 7 || pos[1] < 0)
+      return false
+    end
+    true
   end
 
 
@@ -60,30 +69,33 @@ class Board
 end
 
 class Piece
+  attr_reader :value
   def initialize(piece)
     @piece = piece
+    @value = "P"
   end
 
-  def inspect
-    "P"
-  end
+  # def inspect
+  #
+  # end
 end
 
 class NullPiece < Piece
   include Singleton
 
   def initialize
+    @value = "x"
   end
 
-  def inspect
-    "X"
-  end
+  # def inspect
+  #   "X"
+  # end
 end
 
 if __FILE__ == $PROGRAM_NAME
   board = Board.new()
-  p board.grid
-  board.move_piece([3,0], [4,0])
+  p board.render
+  board.move_piece([0,0], [1,0])
   p "move after"
-  p board.grid
+  Display.render
 end
