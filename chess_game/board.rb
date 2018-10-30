@@ -1,11 +1,11 @@
-
+#Updated with this comment
 class Board
   attr_accessor :piece
-  
+
   def default_grid
     grid = Array.new(8) {Array.new(8)}
   end
-  
+
   def set_up_board
     rows_to_set = [0, 1, 6, 7]
     @grid.each_with_index do |row, idx|
@@ -17,24 +17,24 @@ class Board
         end
       end
     end
-    @grid       
+    @grid
   end
-  
+
   def initialize
     @grid = self.default_grid.set_up_board
   end
-  
+
   def pos=(value)
     pos = row, col
     value = @piece
   end
-  
+
   def move_piece(start_pos, end_pos)
     #check whether the piece can move there
     #check if the spot is occupied by its team piece
     #move piece if two cases pass else raise exception
     #render board with new piece position
-    if !start_pos.nil? 
+    if !start_pos.nil?
       raise "0"
     elsif !end_pos.nil? && end_pos.include?(teampiece)
       raise "1"
@@ -42,20 +42,20 @@ class Board
       update_board(end_pos)
     end
   end
-  
+
   def update_board(pos)
   end
-  
+
   def start_pos
   end
-  
+
   def occupied?
   end
-  
+
   # def gets_move
   #   gets.chomp.split(",")     #In the game itself
   # end
-  # 
+  #
 end
 
 class Piece

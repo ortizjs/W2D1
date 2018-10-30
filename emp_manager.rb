@@ -1,3 +1,5 @@
+
+#Updated with this comment
 class Employee
   attr_reader :name, :salary, :title
   attr_accessor :boss
@@ -7,35 +9,35 @@ class Employee
     @title = title
     self.boss = @boss
   end
-  
+
   def boss=(boss)
     @boss = boss
     boss.add_subordinate(self) unless boss.nil?
     boss
   end
-  
+
   def bonus(multiplier)
     @salary * multiplier
-  end  
+  end
 end
 
 class Manager < Employee
   attr_reader :employees
-  
+
   def initialize(name, title, salary, boss)
     super(name, title, salary, boss)
     @employees = []
   end
-  
+
   def add_subordinate(emp)
     @employees << emp
     emp
   end
-  
+
   def bonus(multiplier)
     self.total_subsalary * multiplier
   end
-  
+
   def total_subsalary
     sal = 0
     self.employees.each do |emp|
