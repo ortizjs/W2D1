@@ -18,6 +18,12 @@ module SteppingPiece #King, Knight
     possibilities
   end
 
+  def calc_move(pos)
+    new_row = pos[0] + MOVES[0]
+    new_col = pos[1] + MOVES[1]
+    new_pos = [new_row, new_col]
+  end
+
 end
 
 class King < Piece
@@ -42,12 +48,20 @@ class Piece
     @value = "P"
   end
 
+
+
+  # def update_pos(diff)
+  #   new_row = @cursor_pos[0] + diff[0]
+  #   new_col = @cursor_pos[1] + diff[1]
+  #   @cursor_pos = [new_row, new_col] unless !board.valid_pos?([new_row, new_col])
+  # end
+
   def moves
     places = []
     @board.grid.each_index do |row|
       row.each_index do |col|
         move = @board[row][col]
-        if valid_move?(move)
+        if self.move_dirs(move)
           places << move
         end
       end
