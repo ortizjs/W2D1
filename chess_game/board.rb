@@ -3,6 +3,7 @@ require "singleton"
 # require "colorized"
 require_relative "display.rb"
 require_relative "cursor.rb"
+require_relative "piece.rb"
 
 #Updated with comment
 class Board
@@ -68,29 +69,6 @@ class Board
   end
 end
 
-class Piece
-  attr_reader :value
-  def initialize(piece)
-    @piece = piece
-    @value = "P"
-  end
-
-  # def inspect
-  #
-  # end
-end
-
-class NullPiece < Piece
-  include Singleton
-
-  def initialize
-    @value = "x"
-  end
-
-  # def inspect
-  #   "X"
-  # end
-end
 
 if __FILE__ == $PROGRAM_NAME
   board = Board.new()
